@@ -1,0 +1,64 @@
+﻿@model MakeAmazingThings.Models.DescricaoCompra
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>DescricaoCompra</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Compra.NumFatura)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Compra.NumFatura)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Produto.NomeProd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Produto.NomeProd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrecoVenda)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrecoVenda)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IVA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IVA)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

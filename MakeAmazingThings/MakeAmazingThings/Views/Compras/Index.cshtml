@@ -1,0 +1,51 @@
+﻿@model IEnumerable<MakeAmazingThings.Models.Compra>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Comprador.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Data)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalSiva)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalCiva)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comprador.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Data)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalSiva)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalCiva)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.NumFatura }) |
+            @Html.ActionLink("Details", "Details", new { id=item.NumFatura }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.NumFatura })
+        </td>
+    </tr>
+}
+
+</table>

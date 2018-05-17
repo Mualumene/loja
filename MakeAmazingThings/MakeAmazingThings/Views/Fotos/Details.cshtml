@@ -1,0 +1,43 @@
+﻿@model MakeAmazingThings.Models.Fotos
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Fotos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Produto.NomeProd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Produto.NomeProd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ordem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ordem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NomeFoto)
+        </dt>
+
+        <dd>
+            <a href="~/imagens/@Model.NomeFoto" target="_blank">
+                <img src="~/imagens/@Model.NomeFoto" width="50" height="37" />
+</dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

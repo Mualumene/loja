@@ -1,0 +1,58 @@
+﻿@model MakeAmazingThings.Models.DescricaoCompra
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DescricaoCompra</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Compra.NumFatura)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Compra.NumFatura)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Produto.NomeProd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Produto.NomeProd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrecoVenda)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrecoVenda)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IVA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IVA)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
