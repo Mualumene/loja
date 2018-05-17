@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -21,7 +22,7 @@ namespace MakeAmazingThings.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("MatDbConnectionString", throwIfV1Schema: false)
         {
         }
 
@@ -29,5 +30,26 @@ namespace MakeAmazingThings.Models
         {
             return new ApplicationDbContext();
         }
+
+
+
+        public virtual DbSet<Compra> Compras { get; set; }
+        public virtual DbSet<Comprador> Compradores { get; set; }
+        public virtual DbSet<Fotos> Fotos { get; set; }
+        public virtual DbSet<DescricaoCompra> DescricoesCompras { get; set; }
+        public virtual DbSet<Produtos> Produtos { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+            modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
+            base.OnModelCreating(modelBuilder);
+        }
+
+
+
+
+
+
     }
 }
