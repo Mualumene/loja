@@ -4,6 +4,7 @@
     ViewBag.Title = "Details";
 }
 
+@*TEM DE ADICIONAR O CODIGO DA ESCOLHA DO PUBLICO ALVO COMO NO CREATE*@
 <h2>Details</h2>
 
 <div>
@@ -63,13 +64,13 @@
         </dt>
 
         @foreach (var item in Model.ListaDeFotografias)
-    {
-        <dd>
-            <a href="~/imagens/@item.NomeFoto" target="_blank">
-                <img src="~/imagens/@item.NomeFoto" width="50" height="37" />
-            </a>
-        </dd>
-}
+        {
+            <dd>
+                <a href="~/imagens/@item.NomeFoto" target="_blank">
+                    <img src="~/imagens/@item.NomeFoto" width="50" height="37" />
+                </a>
+            </dd>
+        }
 
 
     </dl>

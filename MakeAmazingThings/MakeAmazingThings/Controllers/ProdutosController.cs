@@ -15,9 +15,26 @@ namespace MakeAmazingThings.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Produtos
-        public ActionResult Index()
+        // [ValidateAntiForgeryToken]
+        public ActionResult Index(string btPesquisa)
         {
-            return View(db.Produtos.ToList());
+            // guarda a lista de produtos a serem apresentados, no ecrã, ao utilizador
+            List<Produtos> listaProdutos = new List<Produtos>();
+
+            if (!String.IsNullOrEmpty(btPesquisa) && !btPesquisa.Equals("Todos"))
+            {
+                // mostra apenas os produtos 'masculino', 'feminino' ou 'unisexo',
+                // conforme a escolha do utilizador
+                listaProdutos = db.Produtos.Where(p => p.SexoDoUtilizador.Equals(btPesquisa)).OrderByDescending(p => p.Ativo).ToList();
+            }
+            else
+            {
+                // não há filtragem de produtos
+                listaProdutos = db.Produtos.OrderByDescending(p => p.Ativo).ToList();
+            }
+
+            //funcçao do where define se 
+            return View(listaProdutos);
         }
 
         // GET: Produtos/Details/5
@@ -38,6 +55,15 @@ namespace MakeAmazingThings.Controllers
         // GET: Produtos/Create
         public ActionResult Create()
         {
+
+            var listaDeOpcoes = new SelectList(new List<SelectListItem> {
+                new SelectListItem { Text = "Unisexo", Value = "Unisexo"},
+                new SelectListItem { Text = "Masculino", Value ="Masculino"},
+                new SelectListItem { Text = "Feminino", Value = "Feminino"}
+            }, "Text", "Value");
+
+            ViewBag.SexoDoUtilizador = listaDeOpcoes;
+
             return View();
         }
 
@@ -46,16 +72,29 @@ namespace MakeAmazingThings.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,NomeProd,Descricao,Stock,Preco,IvaVenda,Ativo")] Produtos produtos)
+        public ActionResult Create([Bind(Include = "ID,NomeProd,Descricao,SexoDoUtilizador,Stock,Preco,IvaVenda,Ativo")] Produtos produto)
         {
+
+            // avaliar se foi escolhido um tipo de público alvo
+            // se não escolhi, devolver o objeto à view
+
+
             if (ModelState.IsValid)
             {
-                db.Produtos.Add(produtos);
+                db.Produtos.Add(produto);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(produtos);
+            var listaDeOpcoes = new SelectList(new List<SelectListItem> {
+                new SelectListItem { Text = "Unisexo", Value = "Unisexo"},
+                new SelectListItem { Text = "Masculino", Value ="Masculino"},
+                new SelectListItem { Text = "Feminino", Value = "Feminino"}
+            }, "Text", "Value", produto.SexoDoUtilizador);
+
+            ViewBag.SexoDoUtilizador = listaDeOpcoes;
+
+            return View(produto);
         }
 
         // GET: Produtos/Edit/5

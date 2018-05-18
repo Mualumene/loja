@@ -1,14 +1,28 @@
 ﻿@model IEnumerable<MakeAmazingThings.Models.Produtos>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Produtos-MAT";
 }
 
-<h2>Index</h2>
+<h2>Lista de Produtos</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Adicionar novo produto", "Create")
 </p>
+
+@using (Html.BeginForm())
+{
+    <div>
+        <input type="submit" name="btPesquisa" value="Unisexo" />
+        <input type="submit" name="btPesquisa" value="Masculino" />
+        <input type="submit" name="btPesquisa" value="Feminino" />
+        <input type="submit" name="btPesquisa" value="Todos" />
+    </div>
+}
+
+
+
+
 <table class="table">
     <tr>
         <th>
@@ -29,35 +43,45 @@
         <th>
             @Html.DisplayNameFor(model => model.Ativo)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SexoDoUtilizador)
+        </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.NomeProd)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descricao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Stock)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Preco)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IvaVenda)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ativo)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+
+
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeProd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Preco)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IvaVenda)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ativo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SexoDoUtilizador)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
 
 </table>

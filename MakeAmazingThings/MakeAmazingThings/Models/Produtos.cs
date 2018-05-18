@@ -13,6 +13,8 @@ namespace MakeAmazingThings.Models
         {
             ListaDeFotografias = new HashSet<Fotos>();
             ListaDeCompras = new HashSet<DescricaoCompra>();
+
+            
         }
 
 
@@ -24,13 +26,19 @@ namespace MakeAmazingThings.Models
 
         public string Descricao { get; set; }
 
+        [Required]
+        public string SexoDoUtilizador { get; set; }
+
         public int Stock { get; set; }
 
         public decimal Preco { get; set; }
-
+        
         public decimal IvaVenda { get; set; }
 
         public bool Ativo { get; set; }  // situacao do produto
+        
+
+        
 
         //************************************************************************************************
         // referência às fotografias associadas a um Produto
