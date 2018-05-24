@@ -12,13 +12,19 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            @Html.DisplayNameFor(model => model.Marca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Marca)
+        </dd>
+        <dt>
             @Html.DisplayNameFor(model => model.NomeProd)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.NomeProd)
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.Descricao)
         </dt>
@@ -64,13 +70,13 @@
         </dt>
 
         @foreach (var item in Model.ListaDeFotografias)
-        {
-            <dd>
-                <a href="~/imagens/@item.NomeFoto" target="_blank">
-                    <img src="~/imagens/@item.NomeFoto" width="50" height="37" />
-                </a>
-            </dd>
-        }
+    {
+        <dd>
+            <a href="~/imagens/@item.NomeFoto" target="_blank">
+                <img src="~/imagens/@item.NomeFoto" width="50" height="37" />
+            </a>
+        </dd>
+}
 
 
     </dl>

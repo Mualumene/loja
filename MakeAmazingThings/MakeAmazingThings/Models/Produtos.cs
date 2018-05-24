@@ -22,19 +22,33 @@ namespace MakeAmazingThings.Models
         [Key]
         public int ID { get; set; }
 
+
+        [Required(ErrorMessage = "O {0} é de preenchimento obrigatório!")]
+        public string Marca { get; set; }
+
+        [Required(ErrorMessage = "O {0} é de preenchimento obrigatório!")]
+        [Display(Name = "Nome do Produto")]
         public string NomeProd { get; set; }
 
+        [Required(ErrorMessage = "O {0} é de preenchimento obrigatório!")]
         public string Descricao { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "O {0} é de preenchimento obrigatório!")]
+        [Display(Name = "Publico Alvo")]
         public string SexoDoUtilizador { get; set; }
-
+        
+        [Required(ErrorMessage = "O {0} é de preenchimento obrigatório!")]
+        [Display(Name = "Stock Disponivel")]
         public int Stock { get; set; }
 
+        [Required(ErrorMessage = "O {0} é de preenchimento obrigatório!")]
+        [Display(Name = "Preço")]
         public decimal Preco { get; set; }
-        
+
+        [Required(ErrorMessage = "O {0} é de preenchimento obrigatório!")]
         public decimal IvaVenda { get; set; }
 
+        [Required(ErrorMessage = "O {0} é de preenchimento obrigatório!")]
         public bool Ativo { get; set; }  // situacao do produto
         
 

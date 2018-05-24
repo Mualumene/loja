@@ -20,68 +20,113 @@
     </div>
 }
 
+@foreach (var item in Model)
+{
 
-
-
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.NomeProd)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Descricao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Stock)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Preco)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IvaVenda)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Ativo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SexoDoUtilizador)
-        </th>
-        <th></th>
-    </tr>
-
-
-
-    @foreach (var item in Model)
+    <div>
+        @foreach (var foto in item.ListaDeFotografias)
     {
+        <dd>
+            <a href="~/imagens/@foto.NomeFoto" target="_blank">
+                <img src="~/imagens/@foto.NomeFoto" width="50" height="37" />
+            </a>
+        </dd>
 
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NomeProd)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descricao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Stock)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Preco)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IvaVenda)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ativo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SexoDoUtilizador)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-            </td>
-        </tr>
-    }
+        <a href="~/imagens/@item." target="_blank">
+            <img src="~/imagens/@item.ListaDeFotografias" width="50" height="37" />
+        </a>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Marca)
+                </th>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Marca)
+                </td>
+            </tr>
+        </table>
 
-</table>
+}
+    </div>
+        }
+
+
+
+
+
+        @*
+            }
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Marca)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.NomeProd)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Descricao)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Stock)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Preco)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.IvaVenda)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Ativo)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SexoDoUtilizador)
+                        </th>
+
+                        <th></th>
+                    </tr>
+
+
+
+
+
+                    @foreach (var item in Model)
+                {
+
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Marca)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NomeProd)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Descricao)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Stock)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Preco)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IvaVenda)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Ativo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SexoDoUtilizador)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                        </td>
+                    </tr>
+
+            }
+
+                </table>
+
+        *@

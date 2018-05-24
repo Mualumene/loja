@@ -30,12 +30,12 @@ namespace MakeAmazingThings.Migrations
             //
 
             var registosDeProdutos = new List<Produtos> {
-                new Produtos  {ID =1, NomeProd ="Tesoura", Descricao ="Serve para cortar coisas", SexoDoUtilizador="Unisexo", Ativo =true, Preco = 5, IvaVenda =21, Stock =5,  },
-                new Produtos  {ID =2, NomeProd ="Pente", Descricao ="Serve para pentear coisas", SexoDoUtilizador="Feminino", Ativo =true, Preco = 3.99m, IvaVenda =21, Stock =10, },
-                new Produtos  {ID =3, NomeProd ="Navalha", Descricao ="Serve para cortar coisas, mas melhor do que uma tesoura", SexoDoUtilizador="Masculino", Ativo =true, Preco = 15, IvaVenda =21, Stock =0, },
-                new Produtos  {ID =4, NomeProd ="TintaVermelha", Descricao ="Serve para pintar coisas de vermelho", SexoDoUtilizador="Feminino", Ativo =true, Preco = 19.99m, IvaVenda =21, Stock =20, },
-                new Produtos  {ID =5, NomeProd ="Cera de Cabelo", Descricao ="Serve para pentear coisas", SexoDoUtilizador="Feminino", Ativo =true, Preco = 6.99m, IvaVenda =21, Stock =10, },
-                new Produtos  {ID =6, NomeProd ="Shampoo", Descricao ="Serve para lavar coisas", SexoDoUtilizador="Unisexo", Ativo =true, Preco = 8, IvaVenda =21, Stock =10,  },
+                new Produtos  {ID =1, Marca="AAA", NomeProd ="Tesoura", Descricao ="Serve para cortar coisas", SexoDoUtilizador="Unisexo", Ativo =true, Preco = 5, IvaVenda =21, Stock =5,  },
+                new Produtos  {ID =2,Marca="BBB", NomeProd ="Pente", Descricao ="Serve para pentear coisas", SexoDoUtilizador="Feminino", Ativo =true, Preco = 3.99m, IvaVenda =21, Stock =10, },
+                new Produtos  {ID =3,Marca="CCC", NomeProd ="Navalha", Descricao ="Serve para cortar coisas, mas melhor do que uma tesoura", SexoDoUtilizador="Masculino", Ativo =true, Preco = 15, IvaVenda =21, Stock =0, },
+                new Produtos  {ID =4,Marca="AAA", NomeProd ="TintaVermelha", Descricao ="Serve para pintar coisas de vermelho", SexoDoUtilizador="Feminino", Ativo =true, Preco = 19.99m, IvaVenda =21, Stock =20, },
+                new Produtos  {ID =5,Marca="CCC", NomeProd ="Cera de Cabelo", Descricao ="Serve para pentear coisas", SexoDoUtilizador="Feminino", Ativo =true, Preco = 6.99m, IvaVenda =21, Stock =10, },
+                new Produtos  {ID =6,Marca="AAA", NomeProd ="Shampoo", Descricao ="Serve para lavar coisas", SexoDoUtilizador="Unisexo", Ativo =true, Preco = 8, IvaVenda =21, Stock =10,  },
             };
             
             registosDeProdutos.ForEach(pp => context.Produtos.AddOrUpdate(p => p.ID, pp));

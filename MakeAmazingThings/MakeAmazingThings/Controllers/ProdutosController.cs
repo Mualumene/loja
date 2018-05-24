@@ -104,6 +104,14 @@ namespace MakeAmazingThings.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+             var listaDeOpcoes = new SelectList(new List<SelectListItem> {
+                new SelectListItem { Text = "Unisexo", Value = "Unisexo"},
+                new SelectListItem { Text = "Masculino", Value ="Masculino"},
+                new SelectListItem { Text = "Feminino", Value = "Feminino"}
+            }, "Text", "Value");
+
+            ViewBag.SexoDoUtilizador = listaDeOpcoes;
+            
             Produtos produtos = db.Produtos.Find(id);
             if (produtos == null)
             {
@@ -125,6 +133,13 @@ namespace MakeAmazingThings.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            var listaDeOpcoes = new SelectList(new List<SelectListItem> {
+                new SelectListItem { Text = "Unisexo", Value = "Unisexo"},
+                new SelectListItem { Text = "Masculino", Value ="Masculino"},
+                new SelectListItem { Text = "Feminino", Value = "Feminino"}
+            }, "Text", "Value", produtos.SexoDoUtilizador);
+
+            ViewBag.SexoDoUtilizador = listaDeOpcoes;
             return View(produtos);
         }
 
