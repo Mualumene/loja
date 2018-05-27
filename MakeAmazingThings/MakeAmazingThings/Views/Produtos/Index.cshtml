@@ -20,35 +20,27 @@
     </div>
 }
 
-@foreach (var item in Model)
-{
-
-    <div>
-        @foreach (var foto in item.ListaDeFotografias)
+    <div class="row">
+        @foreach (var item in Model)
     {
-        <dd>
-            <a href="~/imagens/@foto.NomeFoto" target="_blank">
-                <img src="~/imagens/@foto.NomeFoto" width="50" height="37" />
+
+        <div class="col-sm-4" style="padding:4px 4px 4px 4px">
+           
+           <a href="~/imagens/@item.Fotografia" target="_blank">
+            <img src="~/imagens/@item.Fotografia" class="img-responsive" style="width:75%" />
             </a>
-        </dd>
-
-        <a href="~/imagens/@item." target="_blank">
-            <img src="~/imagens/@item.ListaDeFotografias" width="50" height="37" />
-        </a>
-        <table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Marca)
-                </th>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Marca)
-                </td>
-            </tr>
-        </table>
-
+            <p> @Html.DisplayFor(modelItem => item.Marca)</p>
+            <p> @Html.DisplayFor(modelItem => item.NomeProd)</p>
+            <p> @Html.DisplayFor(modelItem => item.Preco)€</p>
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </p>
+            
+        </div>
 }
     </div>
-        }
 
 
 

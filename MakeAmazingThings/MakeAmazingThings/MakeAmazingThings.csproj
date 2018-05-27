@@ -195,7 +195,6 @@
     <Compile Include="Controllers\CompradoresController.cs" />
     <Compile Include="Controllers\ComprasController.cs" />
     <Compile Include="Controllers\DescricaoComprasController.cs" />
-    <Compile Include="Controllers\FotosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProdutosController.cs" />
@@ -206,7 +205,6 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Compra.cs" />
     <Compile Include="Models\Comprador.cs" />
-    <Compile Include="Models\Fotos.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Produtos.cs" />
@@ -224,12 +222,13 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="imagens\cera.jpg" />
-    <Content Include="imagens\navalha.jpg" />
-    <Content Include="imagens\pente.jpg" />
-    <Content Include="imagens\shampoo.png" />
-    <Content Include="imagens\Tesoura.jpg" />
-    <Content Include="imagens\tinta vermelha.jpg" />
+    <Content Include="imagens\andreia-gel.png" />
+    <Content Include="imagens\mat-secante.png" />
+    <Content Include="imagens\mat-verniz.png" />
+    <Content Include="imagens\osis-cera.png" />
+    <Content Include="imagens\realnatura-champo.png" />
+    <Content Include="imagens\realnatura-mascara.png" />
+    <Content Include="imagens\schwarzkopf-laca.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -284,11 +283,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Fotos\Create.cshtml" />
-    <Content Include="Views\Fotos\Delete.cshtml" />
-    <Content Include="Views\Fotos\Details.cshtml" />
-    <Content Include="Views\Fotos\Edit.cshtml" />
-    <Content Include="Views\Fotos\Index.cshtml" />
     <Content Include="Views\Compras\Create.cshtml" />
     <Content Include="Views\Compras\Delete.cshtml" />
     <Content Include="Views\Compras\Details.cshtml" />

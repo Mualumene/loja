@@ -11,7 +11,6 @@ namespace MakeAmazingThings.Models
         //construtor
         public Produtos()
         {
-            ListaDeFotografias = new HashSet<Fotos>();
             ListaDeCompras = new HashSet<DescricaoCompra>();
 
             
@@ -50,13 +49,15 @@ namespace MakeAmazingThings.Models
 
         [Required(ErrorMessage = "O {0} é de preenchimento obrigatório!")]
         public bool Ativo { get; set; }  // situacao do produto
-        
 
-        
+        [Required(ErrorMessage = "O {0} é de preenchimento obrigatório!")]
+        public string Fotografia { get; set; }
+
+
+
 
         //************************************************************************************************
         // referência às fotografias associadas a um Produto
-        public virtual ICollection<Fotos> ListaDeFotografias { get; set; }
         public virtual ICollection<DescricaoCompra> ListaDeCompras { get; set; }
 
     }

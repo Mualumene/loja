@@ -35,7 +35,6 @@ namespace MakeAmazingThings.Models
 
         public virtual DbSet<Compra> Compras { get; set; }
         public virtual DbSet<Comprador> Compradores { get; set; }
-        public virtual DbSet<Fotos> Fotos { get; set; }
         public virtual DbSet<DescricaoCompra> DescricoesCompras { get; set; }
         public virtual DbSet<Produtos> Produtos { get; set; }
 

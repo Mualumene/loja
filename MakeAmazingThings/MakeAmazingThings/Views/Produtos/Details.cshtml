@@ -66,17 +66,12 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => Model.ListaDeFotografias)
+            @Html.DisplayNameFor(model => model.Fotografia)
         </dt>
-
-        @foreach (var item in Model.ListaDeFotografias)
-    {
         <dd>
-            <a href="~/imagens/@item.NomeFoto" target="_blank">
-                <img src="~/imagens/@item.NomeFoto" width="50" height="37" />
-            </a>
+            @Html.DisplayFor(model => model.Fotografia)
         </dd>
-}
+
 
 
     </dl>

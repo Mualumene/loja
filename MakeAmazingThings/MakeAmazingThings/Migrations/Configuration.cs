@@ -30,12 +30,12 @@ namespace MakeAmazingThings.Migrations
             //
 
             var registosDeProdutos = new List<Produtos> {
-                new Produtos  {ID =1, Marca="AAA", NomeProd ="Tesoura", Descricao ="Serve para cortar coisas", SexoDoUtilizador="Unisexo", Ativo =true, Preco = 5, IvaVenda =21, Stock =5,  },
-                new Produtos  {ID =2,Marca="BBB", NomeProd ="Pente", Descricao ="Serve para pentear coisas", SexoDoUtilizador="Feminino", Ativo =true, Preco = 3.99m, IvaVenda =21, Stock =10, },
-                new Produtos  {ID =3,Marca="CCC", NomeProd ="Navalha", Descricao ="Serve para cortar coisas, mas melhor do que uma tesoura", SexoDoUtilizador="Masculino", Ativo =true, Preco = 15, IvaVenda =21, Stock =0, },
-                new Produtos  {ID =4,Marca="AAA", NomeProd ="TintaVermelha", Descricao ="Serve para pintar coisas de vermelho", SexoDoUtilizador="Feminino", Ativo =true, Preco = 19.99m, IvaVenda =21, Stock =20, },
-                new Produtos  {ID =5,Marca="CCC", NomeProd ="Cera de Cabelo", Descricao ="Serve para pentear coisas", SexoDoUtilizador="Feminino", Ativo =true, Preco = 6.99m, IvaVenda =21, Stock =10, },
-                new Produtos  {ID =6,Marca="AAA", NomeProd ="Shampoo", Descricao ="Serve para lavar coisas", SexoDoUtilizador="Unisexo", Ativo =true, Preco = 8, IvaVenda =21, Stock =10,  },
+                new Produtos  {ID =1, Marca="Andreia", NomeProd ="Gel Vermelho", Descricao ="Gel que pinta coisas de vermelho", SexoDoUtilizador="Feminino", Ativo =true, Preco = 3.90m, IvaVenda =21, Stock =5,  Fotografia="andreia-gel.png"},
+                new Produtos  {ID =2,Marca="Real Natura", NomeProd ="Champo", Descricao ="Champo com aroma a coco", SexoDoUtilizador="Unisexo", Ativo =true, Preco = 5.99m, IvaVenda =21, Stock =10, Fotografia="realnatura-champo.png"},
+                new Produtos  {ID =3,Marca="MAT", NomeProd ="Secante", Descricao ="Seca o gel das unhas", SexoDoUtilizador="Feminino", Ativo =true, Preco = 2.50m, IvaVenda =21, Stock =0, Fotografia="mat-secante.png"},
+                new Produtos  {ID =4,Marca="MAT", NomeProd ="Verniz Vermelho", Descricao ="Pinta unhas de vermelho", SexoDoUtilizador="Feminino", Ativo =true, Preco = 2.50m, IvaVenda =21, Stock =20, Fotografia="mat-verniz.png"},
+                new Produtos  {ID =5,Marca="Osis", NomeProd ="Cera de cabelo", Descricao ="Ajuda a segurar penteados", SexoDoUtilizador="Masculino", Ativo =true, Preco = 6.99m, IvaVenda =21, Stock =10,Fotografia="osis-cera.png" },
+                new Produtos  {ID =6,Marca="Schwarzkopf", NomeProd ="Laca de cabelo", Descricao ="Ajuda a segurar penteados", SexoDoUtilizador="Unisexo", Ativo =true, Preco = 10, IvaVenda =21, Stock =10, Fotografia="schwarzkopf-laca.png" },
             };
             
             registosDeProdutos.ForEach(pp => context.Produtos.AddOrUpdate(p => p.ID, pp));
@@ -53,20 +53,20 @@ namespace MakeAmazingThings.Migrations
             registosDeCompradores.ForEach(cc => context.Compradores.AddOrUpdate(c => c.ID, cc));
             context.SaveChanges();
             
-            
+/*            
             var registosDeFotos = new List<Fotos> {
-                new Fotos { ID=1, NomeFoto= "cera.jpg" , Ordem=1 , ProdutoFK=1},
+                new Fotos { ID=1, NomeFoto= "cera.jpg" , Ordem=1 , ProdutoFK=5},
                 new Fotos { ID=2, NomeFoto= "pente.jpg" , Ordem=2, ProdutoFK=2 },
-                new Fotos { ID=3, NomeFoto= "shampoo.png", Ordem=3 , ProdutoFK=3},
-                new Fotos { ID=4, NomeFoto= "Tesoura.jpg", Ordem=4 , ProdutoFK=4},
-                new Fotos { ID=5, NomeFoto= "navalha.jpg", Ordem=5 , ProdutoFK=5},
-                new Fotos { ID=6, NomeFoto= "tinta vermelha.jpg", Ordem= 6, ProdutoFK=6},
+                new Fotos { ID=3, NomeFoto= "shampoo.png", Ordem=3 , ProdutoFK=6},
+                new Fotos { ID=4, NomeFoto= "Tesoura.jpg", Ordem=4 , ProdutoFK=1},
+                new Fotos { ID=5, NomeFoto= "navalha.jpg", Ordem=5 , ProdutoFK=3},
+                new Fotos { ID=6, NomeFoto= "tinta vermelha.jpg", Ordem= 6, ProdutoFK=4},
                 };
-
+                
 
             registosDeFotos.ForEach(ff => context.Fotos.AddOrUpdate(f => f.ID, ff));
             context.SaveChanges();
-
+            */
 
             var registosDeCompras = new List<Compra> {
                 new Compra  {NumFatura =1, Data= new DateTime(2018,05,20) , TotalCiva=10 , TotalSiva=5, CompradorFk=1   },
@@ -79,7 +79,6 @@ namespace MakeAmazingThings.Migrations
             registosDeCompras.ForEach(oo => context.Compras.AddOrUpdate(o => o.NumFatura, oo));
             context.SaveChanges();
 
-            //as seguintes tabelas nao estão a ser inseridas na base dados
             var registosDeDescricao = new List<DescricaoCompra> {
                 new DescricaoCompra { ID=1, Quantidade= 2,PrecoVenda= 10, IVA=21, CompraFk=1, ProdutoFk=1 },
                 new DescricaoCompra { ID=2, Quantidade= 1,PrecoVenda= 20, IVA=21, CompraFk=2, ProdutoFk=2 },
