@@ -218,11 +218,17 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\JavaScript.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="imagens\andreia-gel.png" />
+    <Content Include="imagens\Capa1.jpg" />
+    <Content Include="imagens\capa2.png" />
+    <Content Include="imagens\capa3.png" />
+    <Content Include="imagens\capa4.jpg" />
+    <Content Include="imagens\capa5.png" />
     <Content Include="imagens\mat-secante.png" />
     <Content Include="imagens\mat-verniz.png" />
     <Content Include="imagens\osis-cera.png" />
@@ -305,6 +311,7 @@
     <Content Include="Views\Compradores\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Code\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>

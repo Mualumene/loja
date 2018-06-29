@@ -69,8 +69,11 @@
             @Html.DisplayNameFor(model => model.Fotografia)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Fotografia)
-        </dd>
+           <a 
+            href="~/imagens/Produtos" target="_blank">
+    <img src="~/imagens/@Model.Fotografia" class="img-responsive" style="width:75%" />
+               </a>
+</dd>
 
 
 

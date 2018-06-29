@@ -20,13 +20,13 @@
     </div>
 }
 
-    <div class="row">
+    <div class="row" >
         @foreach (var item in Model)
     {
 
         <div class="col-sm-4" style="padding:4px 4px 4px 4px">
            
-           <a href="~/imagens/@item.Fotografia" target="_blank">
+           <a href="@Url.Action("Details", "Produtos", new { id = item.ID})" target="_blank">
             <img src="~/imagens/@item.Fotografia" class="img-responsive" style="width:75%" />
             </a>
             <p> @Html.DisplayFor(modelItem => item.Marca)</p>
