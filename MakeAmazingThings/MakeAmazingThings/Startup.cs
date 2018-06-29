@@ -1,8 +1,6 @@
-﻿using Microsoft.Owin;
-using Owin;
+﻿using Owin;
 
-[assembly: OwinStartupAttribute(typeof(MakeAmazingThings.Startup))]
-namespace MakeAmazingThings
+namespace IdentitySample
 {
     public partial class Startup
     {

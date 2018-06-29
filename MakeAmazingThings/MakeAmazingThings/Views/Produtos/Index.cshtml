@@ -26,7 +26,7 @@
 
         <div class="col-sm-4" style="padding:4px 4px 4px 4px">
            
-           <a href="@Url.Action("Details", "Produtos", new { id = item.ID})" target="_blank">
+           <a href="@Url.Action("Details", "Produtos", new { id = item.ID})" >
             <img src="~/imagens/@item.Fotografia" class="img-responsive" style="width:75%" />
             </a>
             <p> @Html.DisplayFor(modelItem => item.Marca)</p>

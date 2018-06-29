@@ -1,13 +1,14 @@
-﻿using System.Data.Entity;
+﻿using MakeAmazingThings.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace MakeAmazingThings.Models
+namespace IdentitySample.Models
 {
-    // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
+    // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
@@ -26,13 +27,17 @@ namespace MakeAmazingThings.Models
         {
         }
 
+        static ApplicationDbContext()
+        {
+            // Set the database intializer which is run once during application start
+            // This seeds the database with admin user credentials and admin role
+            Database.SetInitializer<ApplicationDbContext>(new ApplicationDbInitializer());
+        }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
-
-
-
         public virtual DbSet<Compra> Compras { get; set; }
         public virtual DbSet<Comprador> Compradores { get; set; }
         public virtual DbSet<DescricaoCompra> DescricoesCompras { get; set; }
@@ -44,11 +49,5 @@ namespace MakeAmazingThings.Models
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
             base.OnModelCreating(modelBuilder);
         }
-
-
-
-
-
-
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace MakeAmazingThings.Models
+namespace IdentitySample.Models
 {
     public class ExternalLoginConfirmationViewModel
     {
@@ -20,7 +20,6 @@ namespace MakeAmazingThings.Models
         public string SelectedProvider { get; set; }
         public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
         public string ReturnUrl { get; set; }
-        public bool RememberMe { get; set; }
     }
 
     public class VerifyCodeViewModel
@@ -35,8 +34,6 @@ namespace MakeAmazingThings.Models
 
         [Display(Name = "Remember this browser?")]
         public bool RememberBrowser { get; set; }
-
-        public bool RememberMe { get; set; }
     }
 
     public class ForgotViewModel

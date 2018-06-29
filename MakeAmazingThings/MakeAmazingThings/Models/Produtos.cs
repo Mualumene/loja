@@ -15,9 +15,7 @@ namespace MakeAmazingThings.Models
 
             
         }
-
-
-
+        
         [Key]
         public int ID { get; set; }
 

@@ -1,5 +1,6 @@
 namespace MakeAmazingThings.Migrations
 {
+    using IdentitySample.Models;
     using MakeAmazingThings.Models;
     using System;
     using System.Collections.Generic;
@@ -7,14 +8,14 @@ namespace MakeAmazingThings.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<MakeAmazingThings.Models.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(MakeAmazingThings.Models.ApplicationDbContext context)
+        protected override void Seed(ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 
