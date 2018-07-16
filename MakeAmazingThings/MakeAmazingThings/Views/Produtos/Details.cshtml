@@ -1,12 +1,9 @@
 ﻿@model MakeAmazingThings.Models.Produtos
-
 @{
     ViewBag.Title = "Details";
 }
-
 @*TEM DE ADICIONAR O CODIGO DA ESCOLHA DO PUBLICO ALVO COMO NO CREATE*@
 <h2>Details</h2>
-
 <div>
     <h4>Produtos</h4>
     <hr />
@@ -14,72 +11,61 @@
         <dt>
             @Html.DisplayNameFor(model => model.Marca)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Marca)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.NomeProd)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.NomeProd)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Descricao)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Descricao)
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.Stock)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Stock)
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.Preco)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Preco)
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.IvaVenda)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.IvaVenda)
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.Ativo)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Ativo)
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.Fotografia)
         </dt>
         <dd>
-           <a 
-            href="~/imagens/Produtos" target="_blank">
-    <img src="~/imagens/@Model.Fotografia" class="img-responsive" style="width:75%" />
-               </a>
-</dd>
-
-
+            <a href="~/imagens/Produtos" target="_blank">
+                <img src="~/imagens/@Model.Fotografia" class="img-responsive" style="width:25%" />
+            </a>
+        </dd>
 
     </dl>
 </div>
+@if (User.IsInRole("Administrador"))
+{
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) </p>
+}
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+        @Html.ActionLink("Back to List", "Index")
+    </p>
