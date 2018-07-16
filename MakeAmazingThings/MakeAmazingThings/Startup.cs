@@ -54,6 +54,8 @@ namespace IdentitySample
             string userPWD = "123Qwe.";
             var chkUser = userManager.Create(user, userPWD);
 
+            
+
             //Adicionar o Utilizador à respetiva Role-Administrador
             if (chkUser.Succeeded)
             {
