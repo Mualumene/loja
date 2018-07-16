@@ -206,7 +206,6 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
-    <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\Compra.cs" />
     <Compile Include="Models\Comprador.cs" />
     <Compile Include="Models\IdentityModels.cs" />

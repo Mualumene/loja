@@ -48,7 +48,6 @@ namespace MakeAmazingThings.Models
         [Required(ErrorMessage = "O {0} é de preenchimento obrigatório!")]
         public bool Ativo { get; set; }  // situacao do produto
 
-        [Required(ErrorMessage = "O {0} é de preenchimento obrigatório!")]
         public string Fotografia { get; set; }
 
 

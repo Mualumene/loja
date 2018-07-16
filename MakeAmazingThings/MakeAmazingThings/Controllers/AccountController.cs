@@ -9,6 +9,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using MakeAmazingThings.Models;
 
 namespace IdentitySample.Controllers
 {
@@ -18,6 +19,8 @@ namespace IdentitySample.Controllers
         public AccountController()
         {
         }
+
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
         {
@@ -151,8 +154,15 @@ namespace IdentitySample.Controllers
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
+
                 if (result.Succeeded)
                 {
+
+                    var utilizador = new Comprador { ID = db.Compradores.Max(c => c.ID) + 1, Nome = model.comprador.Nome, Morada = model.comprador.Morada, Telemovel = model.comprador.Telemovel, NIF = model.comprador.NIF, CodPostal = model.comprador.CodPostal };
+                    db.Compradores.Add(utilizador);
+                    db.SaveChanges();
+
+                    var RoleResult = await UserManager.AddToRoleAsync(user.Id, "Utilizador");
                     var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");

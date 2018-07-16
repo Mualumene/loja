@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using MakeAmazingThings.Models;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace IdentitySample.Models
@@ -76,6 +77,8 @@ namespace IdentitySample.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        public virtual Comprador comprador { get; set; }
     }
 
     public class ResetPasswordViewModel

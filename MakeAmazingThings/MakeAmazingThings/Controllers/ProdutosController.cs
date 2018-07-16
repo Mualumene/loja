@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -73,19 +74,74 @@ namespace MakeAmazingThings.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,NomeProd,Descricao,SexoDoUtilizador,Stock,Preco,IvaVenda,Ativo")] Produtos produto)
+        public ActionResult Create([Bind(Include = "ID,Marca,NomeProd,Descricao,SexoDoUtilizador,Stock,Preco,IvaVenda,Ativo,Fotografia")] Produtos produto, HttpPostedFileBase fileUploadFotografia)
         {
+            // determinar o ID do novo Agente
+            int novoID = 0;
+            // *****************************************
+            // proteger a geração de um novo ID
+            // *****************************************
+            // determinar o nº de Agentes na tabela
+            if (db.Produtos.Count() == 0)
+            {
+                novoID = 1;
+            }
+            else
+            {
+                novoID = db.Produtos.Max(a => a.ID) + 1;
+            }
+            // atribuir o ID ao novo agente
+            produto.ID = novoID;
+            // ***************************************************
+            // outra hipótese possível seria utilizar o
+            // try { }
+            // catch(Exception) { }
+            // ***************************************************
+
+
+            // var. auxiliar
+            string nomeFotografia = "Produto_" + novoID + ".jpg";
+            string caminhoParaFotografia = Path.Combine(Server.MapPath("~/imagens/"), nomeFotografia); // indica onde a imagem será guardada
+
+            // verificar se chega efetivamente um ficheiro ao servidor
+            if (fileUploadFotografia != null)
+            {
+                // guardar o nome da imagem na BD
+                produto.Fotografia = nomeFotografia;
+            }
+            else
+            {
+                // não há imagem...
+                ModelState.AddModelError("", "Não foi fornecida uma imagem..."); // gera MSG de erro
+                return View(produto); // reenvia os dados do 'Agente' para a View
+            }
 
             // avaliar se foi escolhido um tipo de público alvo
             // se não escolhi, devolver o objeto à view
 
-
             if (ModelState.IsValid)
             {
-                db.Produtos.Add(produto);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    // adiciona na estrutura de dados, na memória do servidor,
+                    // o objeto Agentes
+                    db.Produtos.Add(produto);
+                    // faz 'commit' na BD
+                    db.SaveChanges();
+
+                    // guardar a imagem no disco rígido
+                    fileUploadFotografia.SaveAs(caminhoParaFotografia);
+
+                    // redireciona o utilizador para a página de início
+                    return RedirectToAction("Index");
+                }
+                catch (Exception)
+                {
+                    // gerar uma mensagem de erro para o utilizador
+                    ModelState.AddModelError("", "Ocorreu um erro não determinado na criação do novo Agente...");
+                }
             }
+            
 
             var listaDeOpcoes = new SelectList(new List<SelectListItem> {
                 new SelectListItem { Text = "Unisexo", Value = "Unisexo"},
@@ -134,6 +190,9 @@ namespace MakeAmazingThings.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
+
+            
             var listaDeOpcoes = new SelectList(new List<SelectListItem> {
                 new SelectListItem { Text = "Unisexo", Value = "Unisexo"},
                 new SelectListItem { Text = "Masculino", Value ="Masculino"},
