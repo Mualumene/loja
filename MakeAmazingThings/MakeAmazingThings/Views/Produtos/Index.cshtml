@@ -6,9 +6,12 @@
 
 <h2>Lista de Produtos</h2>
 
-<p>
+@if (User.IsInRole("Administrador")) {
+    <p>
     @Html.ActionLink("Adicionar novo produto", "Create")
 </p>
+}
+    
 
 @using (Html.BeginForm())
 {
@@ -25,19 +28,21 @@
     {
 
         <div class="col-sm-4" style="padding:4px 4px 4px 4px">
-           
-            <a href="~/imagens/@item.Fotografia" target="_blank">
+
+            <a href="@Url.Action("Details","Produtos", new { id=item.ID } )">
                 <img src="~/imagens/@item.Fotografia" class="img-responsive" style="width:75%" />
             </a>
             <p> @Html.DisplayFor(modelItem => item.Marca)</p>
             <p> @Html.DisplayFor(modelItem => item.NomeProd)</p>
             <p> @Html.DisplayFor(modelItem => item.Preco)€</p>
-            <p>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-            </p>
-            
+
+            @if (User.IsInRole("Administrador")) {<p>
+    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+</p> }
+        
+
         </div>
 }
     </div>

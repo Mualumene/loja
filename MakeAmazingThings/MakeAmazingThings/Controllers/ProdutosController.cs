@@ -182,17 +182,51 @@ namespace MakeAmazingThings.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,NomeProd,Descricao,Stock,Preco,IvaVenda,Ativo")] Produtos produtos)
+        public ActionResult Edit([Bind(Include = "ID,Marca,NomeProd,Descricao,SexoDoUtilizador,Stock,Preco,IvaVenda,Ativo,Fotografia")] Produtos produtos, HttpPostedFileBase fileUploadFotografia)
         {
-            if (ModelState.IsValid)
+
+            // var. auxiliar
+            string nomeFotografia = "Produto_" + produtos.ID + ".jpg";
+            string caminhoParaFotografia = Path.Combine(Server.MapPath("~/imagens/"), nomeFotografia); // indica onde a imagem será guardada
+
+            // verificar se chega efetivamente um ficheiro ao servidor
+            if (fileUploadFotografia != null)
             {
-                db.Entry(produtos).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                // guardar o nome da imagem na BD
+                produtos.Fotografia = nomeFotografia;
+            }
+            else
+            {
+                // não há imagem...
+                ModelState.AddModelError("", "Não foi fornecida uma imagem..."); // gera MSG de erro
+                return View(produtos); // reenvia os dados do 'Agente' para a View
             }
 
+            // avaliar se foi escolhido um tipo de público alvo
+            // se não escolhi, devolver o objeto à view
 
-            
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    db.Entry(produtos).State = EntityState.Modified;
+                  
+                    // faz 'commit' na BD
+                    db.SaveChanges();
+
+                    // guardar a imagem no disco rígido
+                    fileUploadFotografia.SaveAs(caminhoParaFotografia);
+
+                    // redireciona o utilizador para a página de início
+                    return RedirectToAction("Index");
+                }
+                catch (Exception)
+                {
+                    // gerar uma mensagem de erro para o utilizador
+                    ModelState.AddModelError("", "Ocorreu um erro não determinado na criação do novo Agente...");
+                }
+            }
+
             var listaDeOpcoes = new SelectList(new List<SelectListItem> {
                 new SelectListItem { Text = "Unisexo", Value = "Unisexo"},
                 new SelectListItem { Text = "Masculino", Value ="Masculino"},
@@ -200,7 +234,8 @@ namespace MakeAmazingThings.Controllers
             }, "Text", "Value", produtos.SexoDoUtilizador);
 
             ViewBag.SexoDoUtilizador = listaDeOpcoes;
-            return View(produtos);
+            //return View(produtos);
+            return RedirectToAction("Index");
         }
 
         // GET: Produtos/Delete/5
